@@ -1,4 +1,8 @@
-
+/**
+* @param setA
+* @param setB
+* return {intersectSet}
+*/
 function Intersect(setA, setB) 
 {
     let intersectSet = new Set();
@@ -10,17 +14,24 @@ function Intersect(setA, setB)
     return intersectSet;
 }
 
+/**
+* @param setA
+* @param setB
+* return {Set}
+*/
 function union(setA, setB) 
 {
     return new Set([...setA, ...setB]);
 }
 
-//setA is a superSet of setB
+/**
+* @param setA
+* @param setB
+* return {boolean}
+*/
+
 function isSuperSet(setA, setB)
 {
-    if(setA <= setB) {
-     return false;   
-    }
     for(let elem of setB) {
         if(setB.has(elem)) {
             return true;
@@ -28,7 +39,12 @@ function isSuperSet(setA, setB)
         return false;
     }
 }
-// get the difference of two sets
+
+/**
+* @param setA
+* @param setB
+* return {differenceSet}
+*/
 function difference(setA, setB) 
 {
     let differenceSet = new Set(setA);
@@ -38,7 +54,11 @@ function difference(setA, setB)
     return differenceSet;
 }
 
-//setA is a subset of setB
+/**
+* @param setA
+* @param setB
+* return {boolean}
+*/
 function isSubSet(setA, setB)
 {
     if(setA.size >= setB.size) {
@@ -50,11 +70,14 @@ function isSubSet(setA, setB)
     })
 }
 
+
+
 //usage
 
-//intersect(new Set([1,2,3,4,5]), new Set([2,3,5,6])); //{2,3}
-//union(new Set([1,2,3,4]), new Set([5,6,7,8,9])); //{1,2,3,4,5,6,7,8,9}
-//isSuperSet(new Set([1,2,3,4,5,6,6]), new Set([2,3])); //true
-//isSuperSet(new Set([1,2,3]), new Set([2,3])); //true
-//difference(new Set([1,2,3,4,5]), new Set([1,2,3]));
-//isSubSet(new Set([1,2,3]), new Set([1,2,3,4,5,6,7]));
+Intersect(new Set([1,2,3,4,5]), new Set([2,3,5,6])); //{2,3}
+union(new Set([1,2,3,4]), new Set([5,6,7,8,9])); //{1,2,3,4,5,6,7,8,9}
+isSuperSet(new Set([1,2,3,4,5,6,6]), new Set([2,3])); //true
+isSuperSet(new Set([1,2,3]), new Set([2,3,7,8])); //false
+difference(new Set([1,2,3,4,5]), new Set([1,2,3])); //new Set([4,5])
+isSubSet(new Set([1,2,3]), new Set([1,2,3,4,5,6,7])); //true
+isSubSet(new Set([1,2,3]), new Set([1,2])); //false
